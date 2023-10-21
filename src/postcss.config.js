@@ -3,7 +3,7 @@ module.exports = {
   plugins: {
     'postcss-px-to-viewport': {
       // 标准屏宽度 viewportWidth
-      viewportWidth: 375,
-    },
-  },
-};
+      viewportWidth: 375
+    }
+  }
+}

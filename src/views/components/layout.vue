@@ -1,12 +1,15 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="layout-page">
-    布局容器
     <router-view></router-view>
-    <router-link to="/home">我的</router-link>
-    <router-link to="/article">健康百科</router-link>
-    <router-link to="/notify">消息通知</router-link>
-    <router-link to="/user">个人中心</router-link>
+    <van-tabbar>
+      <van-tabbar-item to="/home" icon="wap-home-o">我的</van-tabbar-item>
+      <van-tabbar-item to="/article" icon="orders-o">健康百科</van-tabbar-item>
+      <van-tabbar-item to="/notify" icon="comment-circle-o"
+        >消息通知</van-tabbar-item
+      >
+      <van-tabbar-item to="/user" icon="manager-o">个人中心</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
