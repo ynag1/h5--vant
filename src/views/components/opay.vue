@@ -1,8 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <div>药品订单支付</div>
 </template>
 
 <script>
@@ -21,5 +19,5 @@ export default {
   }
 }
 </script>
-<style scoped lang='less'>
+<style scoped lang=''>
 </style>
