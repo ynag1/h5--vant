@@ -10,7 +10,7 @@
       />
       <!-- 导航组件 -->
       <div>
-        <van-grid border="false" center="false">
+        <van-grid :border="false" :center="false">
           <van-grid-item icon="photo-o" text="问医生" to="/room">
             <span>按科室查问医生</span>
           </van-grid-item>
@@ -21,7 +21,7 @@
             <span>线上买药更方便</span>
           </van-grid-item>
         </van-grid>
-        <van-grid border="false" center="false">
+        <van-grid :border="false" :center="false">
           <van-grid-item icon="photo-o" text="药品订单" />
           <van-grid-item icon="photo-o" text="健康档案" />
           <van-grid-item icon="photo-o" text="我的处方" />

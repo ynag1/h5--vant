@@ -15,7 +15,9 @@ import {
   col,
   Search,
   Grid,
-  GridItem
+  GridItem,
+  CellGroup,
+  cell
 } from 'vant'
 const components = [
   Button,
@@ -33,7 +35,9 @@ const components = [
   col,
   Search,
   Grid,
-  GridItem
+  GridItem,
+  CellGroup,
+  cell
 ]
 components.forEach((component) => {
   Vue.use(component)
