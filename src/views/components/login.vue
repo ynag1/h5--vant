@@ -82,7 +82,7 @@ export default {
         const { data: { token } } = await loginAPI(values)
         setKey(KEY, token)
         this.$toast.success('登录成功')
-        this.$router.push('/home')
+        this.$router.push('/user')
       } catch (e) {
         console.log(e)
       }

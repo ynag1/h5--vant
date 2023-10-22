@@ -1,39 +1,85 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="user-page">
-    <div class="user">
-      <img
-        src="http://teachoss.itheima.net/heimaQuestionMiniapp/%E5%AE%98%E6%96%B9%E9%BB%98%E8%AE%A4%E5%A4%B4%E5%83%8F%402x.png"
-        alt=""
-      />
-      <h3>用户名</h3>
+    <!-- 用户名 -->
+    <div>
+      <div class="user">
+        <img :src="data.avatar" alt="" />
+        <h3>{{ data.account }}</h3>
+      </div>
+      <van-grid :border="false" :center="false">
+        <van-grid-item text="收藏" />
+        <van-grid-item text="关注" />
+        <van-grid-item text="积分" />
+        <van-grid-item text="优惠券" />
+      </van-grid>
     </div>
-    <van-grid clickable :column-num="3" :border="false">
-      <van-grid-item icon="clock-o" text="历史记录" to="/" />
-      <van-grid-item icon="bookmark-o" text="我的收藏" to="/collect" />
-      <van-grid-item icon="thumb-circle-o" text="我的点赞" to="/like" />
-    </van-grid>
+    <div>
+      <!-- 药品订单 -->
+      <van-cell-group class="mt20">
+        <van-cell value="内全部订单容" title=" 药品订单" is-link />
+      </van-cell-group>
+      <van-grid :border="false" :center="false">
+        <van-grid-item icon="photo-o" text="待付款" />
+        <van-grid-item dot icon="photo-o" text="待发货" />
+        <van-grid-item icon="photo-o" text="待收获" />
+        <van-grid-item icon="photo-o" text="已完成" />
+      </van-grid>
+    </div>
 
-    <van-cell-group class="mt20">
-      <van-cell title="推荐分享" is-link />
-      <van-cell title="意见反馈" is-link />
-      <van-cell title="关于我们" is-link />
-      <van-cell title="退出登录" is-link />
-    </van-cell-group>
+    <!-- 快捷工具 -->
+    <div>
+      <van-cell-group class="mt20">
+        <van-cell title=" 快捷工具" style="font-weight: 600; font-size: 18px" />
+        <van-cell title=" 我的问诊" to="/consult" is-link icon="orders-o" />
+        <van-cell title=" 我的处方" to="/home" is-link icon="completed-o" />
+        <van-cell title=" 家庭档案" to="/patient" is-link icon="manager-o" />
+        <van-cell title=" 地址管理" to="/home" is-link icon="list-switch" />
+        <van-cell title=" 我的评价" to="/home" is-link icon="records-o" />
+        <van-cell title=" 官方客服" to="/home" is-link icon="friends-o" />
+        <van-cell title=" 设置" to="/home" is-link icon="setting-o" />
+      </van-cell-group>
+    </div>
+    <!-- 退出 -->
+    <van-button
+      size="large"
+      :round="true"
+      style="background-color: #16c2a3; color: #fff; margin-top: 20px"
+      @click="removeBtn"
+      >退出登录</van-button
+    >
   </div>
 </template>
 
 <script>
+import { UserAPI } from '@/api/user'
+import { delKey, KEY } from '@/utils/stoage'
 export default {
   components: { // 引入组件
   },
   data () {
     return {
+      data: {}
     }
   },
   watch: {},
-  created () { },
-  methods: {},
+  created () {
+    this.UserAPI()
+  },
+  methods: {
+    // 点击退出。删除token
+    removeBtn () {
+      delKey(KEY)
+      this.$toast.success('退出登录')
+      this.$router.push('/login')
+    },
+    // 获取用户详情信息
+    async UserAPI () {
+      const { data } = await UserAPI()
+      this.data = data
+      console.log(data)
+    }
+  },
   mounted () { },
   computed: {// 计算属性
   }
@@ -43,7 +89,8 @@ export default {
 .user-page {
   padding: 0 10px;
   background: #f5f5f5;
-  height: 100vh;
+  height: 110vh;
+  padding-bottom: 100px;
   .mt20 {
     margin-top: 20px;
   }

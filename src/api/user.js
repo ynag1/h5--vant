@@ -6,3 +6,9 @@ export const loginAPI = (data) => {
     data
   })
 }
+export const UserAPI = () => {
+  return request({
+    url: 'patient/myUser',
+    method: 'get'
+  })
+}
