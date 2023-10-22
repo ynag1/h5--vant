@@ -15,7 +15,7 @@
       <!-- 通过 validator 进行函数校验 -->
       <van-field
         v-model="username"
-        name="username"
+        name="mobile"
         placeholder="请输入手机号"
         :rules="[
           { required: true, message: '请填手机号' },
@@ -34,9 +34,10 @@
       />
       <div class="cp-cell">
         <van-checkbox>
-          <span>我已同意</span> 用户协议
+          <span>我已同意</span>
+          <a>用户协议</a>
           <span>{{ '\xa0' }}及{{ '\xa0' }}</span>
-          隐私条款
+          <a>隐私条款</a>
         </van-checkbox>
       </div>
       <div class="cp-cell">
@@ -62,6 +63,8 @@
 
 <script>
 import { loginAPI } from '@/api/user'
+import { KEY, setKey } from '@/utils/stoage'
+
 export default {
   components: { // 引入组件
   },
@@ -75,9 +78,14 @@ export default {
   created () { },
   methods: {
     async onSubmit (values) {
-      const data = await loginAPI(values)
-      this.$router.push('/home')
-      console.log(data)
+      try {
+        const { data: { token } } = await loginAPI(values)
+        setKey(KEY, token)
+        this.$toast.success('登录成功')
+        this.$router.push('/home')
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   mounted () { },

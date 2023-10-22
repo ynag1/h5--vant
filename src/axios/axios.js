@@ -1,17 +1,12 @@
 import axios from 'axios'
-
-import { getKey, KEY } from '@/utils/stoage'
-
 const request = axios.create({
-  baseURL: 'https://consult-api.itheima.net/',
+  baseURL: '',
   timout: 5000
 })
 // 添加请求拦截器
 request.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
-    const token = getKey(KEY)
-    token && (config.headers.Authorization = 'Bearer ' + token)
     return config
   },
   function (error) {
@@ -23,7 +18,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
-    return response.data
+    return response
   },
   function (error) {
     // 对响应错误做点什么

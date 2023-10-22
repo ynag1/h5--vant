@@ -12,7 +12,10 @@ import {
   divider,
   checkbox,
   row,
-  col
+  col,
+  Search,
+  Grid,
+  GridItem
 } from 'vant'
 const components = [
   Button,
@@ -27,7 +30,10 @@ const components = [
   divider,
   checkbox,
   row,
-  col
+  col,
+  Search,
+  Grid,
+  GridItem
 ]
 components.forEach((component) => {
   Vue.use(component)
