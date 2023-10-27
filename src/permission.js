@@ -12,7 +12,7 @@ import router from '@/router'
 // getKey取值
 import { KEY, getKey } from '@/utils/stoage'
 
-const whiteList = ['/login'] // 白名单列表，记录无需权限访问的所有页面
+const whiteList = ['/login', '/activate'] // 白名单列表，记录无需权限访问的所有页面
 
 router.beforeEach((to, from, next) => {
   const token = getKey(KEY)

@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-import { getKey, KEY } from '@/utils/stoage'
+import { getKey, KEY, delKey } from '@/utils/stoage'
+import { Toast } from 'vant'
+import router from '@/router'
 
 const request = axios.create({
   baseURL: 'https://consult-api.itheima.net/',
@@ -27,6 +29,14 @@ request.interceptors.response.use(
   },
   function (error) {
     // 对响应错误做点什么
+    if (error.request.message === 401) {
+      router.push('/login')
+      // 请求错误清除token
+      delKey(KEY)
+    } else {
+      // 对响应错误做点什么
+      Toast.fail(error.response?.data?.message || '系统出现错误，请稍后')
+    }
     return Promise.reject(error)
   }
 )

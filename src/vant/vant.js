@@ -17,7 +17,17 @@ import {
   Grid,
   GridItem,
   CellGroup,
-  cell
+  cell,
+  Tab,
+  Tabs,
+  Swipe,
+  SwipeItem,
+  image,
+  PasswordInput,
+  NumberKeyboard,
+  CountDown,
+  Dialog,
+  Card
 } from 'vant'
 const components = [
   Button,
@@ -37,7 +47,17 @@ const components = [
   Grid,
   GridItem,
   CellGroup,
-  cell
+  cell,
+  Tab,
+  Tabs,
+  Swipe,
+  SwipeItem,
+  image,
+  PasswordInput,
+  NumberKeyboard,
+  CountDown,
+  Dialog,
+  Card
 ]
 components.forEach((component) => {
   Vue.use(component)

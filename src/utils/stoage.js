@@ -1,6 +1,6 @@
 export const KEY = 'YOUMED-KEY'
 
-// localStorage.getItem(取值
+// localStorage.getItem(获取
 export const getKey = (key) => {
   return JSON.parse(localStorage.getItem(key))
 }

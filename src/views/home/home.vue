@@ -28,22 +28,72 @@
           <van-grid-item icon="photo-o" text="疾病查询" />
         </van-grid>
       </div>
+      <!-- 轮播图 -->
+      <div class="home-swipe">
+        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+          <van-swipe-item>
+            <img src="@/assets/ad.png" alt="" />
+          </van-swipe-item>
+          <van-swipe-item>
+            <img src="@/assets/ad.png" alt="" />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
+      <!--  -->
+      <div>
+        <van-tabs v-model="active" class="article-page">
+          <!-- 首页关注的医生列表 -->
+          <div>
+            <span>推荐关注</span>
+            <span>查看更多</span>
+          </div>
+          <van-tab title="关注">
+            <HomeItem
+              :knowledge="item"
+              v-for="(item, index) in knowledge"
+              :key="index"
+            />
+          </van-tab>
+          <van-tab title="推荐">内容 2</van-tab>
+          <van-tab title="减脂">内容 3</van-tab>
+          <van-tab title="饮食">内容 3</van-tab>
+        </van-tabs>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import HomeItem from '@/components/home-item'
+// recommend推荐，fatReduction减脂，food健康饮食 like关注医生页面文章
+import { knowledgeAPI } from '@/api/user'
 export default {
   components: { // 引入组件
+    HomeItem
   },
   data () {
     return {
-      value: ''
+      value: '',
+      active: 0,
+      ledge: {
+        current: 1,
+        pageSize: 10,
+        type: 'like'
+      },
+      knowledge: []
     }
   },
   watch: {},
-  created () { },
-  methods: {},
+  created () {
+    this.knowledgeAPI()
+  },
+  methods: {
+    async knowledgeAPI () {
+      const { data: { rows } } = await knowledgeAPI(this.ledge)
+      this.knowledge = [...rows]
+      console.log(this.knowledge)
+    }
+  },
   mounted () { },
   computed: {// 计算属性
   }
@@ -52,12 +102,71 @@ export default {
 <style scoped lang='less'>
 .home-add {
   margin: 9px;
-}
-.home-search {
-  /deep/ .van-search__content {
-    font-size: 19px;
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 10px 6px 0px rgba(220, 216, 216, 0.75);
+  .home-search {
+    .home-swipe img {
+      display: inline-block;
+      width: 100%;
+      height: 100px;
+    }
+    .my-swipe .van-swipe-item {
+      width: 100%;
+      height: 100px;
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  .article-page {
+    margin-bottom: 50px;
+    margin-top: 44px;
+    .my-nav {
+      height: 44px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      > a {
+        color: #999;
+        font-size: 14px;
+        line-height: 44px;
+        margin-left: 20px;
+        position: relative;
+        transition: all 0.3s;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+          width: 0;
+          height: 2px;
+          background: #222;
+          transition: all 0.3s;
+        }
+        &.active {
+          color: #222;
+          &::after {
+            width: 14px;
+          }
+        }
+      }
+      .logo {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        > img {
+          width: 64px;
+          height: 28px;
+          display: block;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
+// 添加轮播图
 </style>

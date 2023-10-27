@@ -5,6 +5,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/activate',
+    name: '启动',
+    component: () => import('@/views/activate/activate')
+  },
+  {
     path: '/',
     name: '布局容器',
     component: () => import('@/views/components/layout'),
