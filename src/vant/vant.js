@@ -27,9 +27,11 @@ import {
   NumberKeyboard,
   CountDown,
   Dialog,
-  Card
+  Card,
+  list
 } from 'vant'
 const components = [
+  list,
   Button,
   Icon,
   NavBar,

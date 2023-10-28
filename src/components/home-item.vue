@@ -20,7 +20,9 @@
         </div>
       </template>
       <template #label>
-        <h2 style="color: #000; font-weight: normal">{{ knowledge.title }}</h2>
+        <h2 style="color: #000; font-weight: normal">
+          {{ knowledge.title }}
+        </h2>
         <div class="body van-multi-ellipsis--l2">
           <!-- clearHtml去除包含html字段 -->
           {{ knowledge.content | clearHtml }}
@@ -77,9 +79,6 @@ export default {
         p {
           margin: 0;
           line-height: 1.5;
-          &.title {
-            // width: 280px;
-          }
           &.other {
             font-size: 10px;
             color: #999;
