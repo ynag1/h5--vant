@@ -7,7 +7,6 @@
         <img :src="data.avatar" alt="" />
         <h3>{{ data.account }}</h3>
         <br />
-        <van-icon name="chat-o" />
       </div>
       <div class="user-P">
         <div>
@@ -204,7 +203,7 @@ export default {
       const { data } = await UserAPI()
       this.data = data
       this.list = data.orderInfo
-      console.log(data)
+      console.log(this.list)
     }
   },
   mounted () { },
@@ -223,7 +222,6 @@ export default {
   /deep/ .van-grid-item__icon {
     width: 30px;
     height: 30px;
-    background-color: pink;
     border-radius: 30%;
   }
   /deep/ .van-icon__image {

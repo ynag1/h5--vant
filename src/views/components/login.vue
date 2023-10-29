@@ -208,10 +208,10 @@ export default {
       try {
         if (this.checkbox === true) {
           const res = await loginAPI(values)
+          Toast(res.message)
           // 把token存储到vuex
           this.$store.commit('SetTokenInfo', res.data.token)
           // setKey(KEY, res.data.token)
-          this.$toast.success(res.message)
           this.$router.push('/home')
         } else {
           this.$toast('请钩选同意')

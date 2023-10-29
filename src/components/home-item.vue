@@ -14,9 +14,15 @@
               {{ knowledge.creatorTitles }}
             </p>
           </div>
-          <!-- <van-button plain type="primary" round size="small" icon="plus"
+          <van-button
+            plain
+            round
+            type="info"
+            icon="plus"
+            size="small"
+            style="color: #07c160"
             >关注</van-button
-          > -->
+          >
         </div>
       </template>
       <template #label>
@@ -64,6 +70,8 @@ export default {
 .article-page {
   .article-item {
     width: 100%;
+    border: 1px #ededed solid;
+    border-radius: 20px;
     .head {
       display: flex;
       img {

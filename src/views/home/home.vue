@@ -132,7 +132,12 @@
                   <span style="color: #a5a5a5">{{ item.creatorDep }}</span>
                   <span style="color: #a5a5a5">{{ item.creatorTitles }}</span>
                   <div>
-                    <van-button round type="info" icon="plus" size="small"
+                    <van-button
+                      round
+                      type="info"
+                      icon="plus"
+                      size="small"
+                      style="color: #fff"
                       >关注</van-button
                     >
                   </div>
@@ -146,10 +151,30 @@
               :key="index"
             />
           </van-tab>
-          <van-tab title="推荐">内容 2</van-tab>
-          <van-tab title="护肤">内容 3</van-tab>
-          <van-tab title="减脂">内容 3</van-tab>
-          <van-tab title="饮食">内容 3</van-tab>
+          <van-tab title="推荐"
+            ><HomeItem
+              :knowledge="item"
+              v-for="(item, index) in knowledge"
+              :key="index"
+          /></van-tab>
+          <van-tab title="护肤"
+            ><HomeItem
+              :knowledge="item"
+              v-for="(item, index) in knowledge"
+              :key="index"
+          /></van-tab>
+          <van-tab title="减脂"
+            ><HomeItem
+              :knowledge="item"
+              v-for="(item, index) in knowledge"
+              :key="index"
+          /></van-tab>
+          <van-tab title="饮食"
+            ><HomeItem
+              :knowledge="item"
+              v-for="(item, index) in knowledge"
+              :key="index"
+          /></van-tab>
         </van-tabs>
       </div>
     </div>
@@ -248,8 +273,8 @@ export default {
     }
   }
   .article-page {
-    margin-bottom: 50px;
-    margin-top: 44px;
+    margin-top: 20px;
+
     .my-nav {
       height: 44px;
       position: fixed;
@@ -348,9 +373,9 @@ export default {
     /deep/ .van-button--small {
       margin-top: 6px;
     }
-    /deep/ .van-button__text {
-      color: #fff;
-    }
+    // /deep/ .van-button__text {
+    //   color: #fff;
+    // }
 
     /deep/ .van-tab--active {
       font-weight: 600;
