@@ -28,7 +28,9 @@
           <p class="home-pp">问医生</p>
           <p style="font-size: 15px; color: #b4b4b4">按科室查问医生</p>
         </div>
-        <div>
+        <div
+          onclick="window.location.href= 'http://localhost:8080/#/fast';return false"
+        >
           <img
             style="width: 50px; height: 50px"
             src="../../assets/问诊.svg"
@@ -221,6 +223,9 @@ export default {
       //   this.ledge.current = this.ledge.current + 1
       //   this.knowledgeAPI()
       // }
+    },
+    ds () {
+      alert('我出现了啊')
     }
   },
   mounted () { },

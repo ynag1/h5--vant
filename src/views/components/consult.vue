@@ -3,7 +3,7 @@
   <div>
     <van-nav-bar title="问诊记录" left-arrow @click-left="$router.back()" />
     <van-tabs v-model="active" class="tabs-vant">
-      <van-tab title="极数问诊">内容 1</van-tab>
+      <van-tab title="极速问诊">内容 1</van-tab>
       <van-tab title="找医生">内容 2</van-tab>
       <van-tab title="开药问诊">内容 3</van-tab>
     </van-tabs>

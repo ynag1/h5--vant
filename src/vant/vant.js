@@ -31,6 +31,7 @@ import {
   list
 } from 'vant'
 const components = [
+  Card,
   list,
   Button,
   Icon,
